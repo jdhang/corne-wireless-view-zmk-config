@@ -31,12 +31,12 @@
                 layer_Symbol {
 // -----------------------------------------------------------------------------------------
 // |  `   |  !   |  @  |  #  |   $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      |
-// |      |      |     |  [  |  ]   |     |   |  -  |  (  |  )  |  =  |     |      |
+// |      |      |     |  [  |  ]   |  |  |   |  -  |  (  |  )  |  =  |     |      |
 // | CTRL | LALT | LFT | DWN |  UP  | RGT |   |  _  |  {  |  }  |  >  |     | SHFT |
 //                     | GUI | LALT |     |   | NUM |     |     |
                         bindings = <
-   &kp GRAVE &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR &trans 
-   &trans    &trans   &trans   &kp LBKT &kp RBKT &trans      &kp MINUS &kp LPAR  &kp RPAR        &kp EQUAL &trans   &trans
+   &kp GRAVE &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR &trans
+   &trans    &trans   &trans   &kp LBKT &kp RBKT &kp PIPE    &kp MINUS &kp LPAR  &kp RPAR        &kp EQUAL &trans   &trans
    &kp LCTRL &kp LALT &kp LEFT &kp DOWN &kp UP   &kp RIGHT   &kp UNDER &kp LBRC  &kp RBRC        &kp GT    &trans   &kp RSHFT
                     	       &kp LGUI &kp LALT &trans   &mo 3   &trans  &trans
                         >;
@@ -49,7 +49,7 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |      |
 //                   |     | GUI | SPC |   | ENT | GUI | ALT |
                         bindings = <
-   &kp GRAVE  &kp N1    &kp N2    &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans 
+   &kp GRAVE  &kp N1    &kp N2    &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
    &trans     &trans    &trans    &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
    &trans     &trans    &trans    &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
                 	          &trans       &kp LGUI     &kp SPACE      &kp RET  &kp LGUI &kp RALT
@@ -67,7 +67,7 @@
    &trans     &trans       &trans       &trans       &trans       &trans         &kp FSLH        &kp N7 &kp N8 &kp N9 &kp MINUS &kp BSPC
    &trans     &trans       &trans       &trans       &trans       &trans         &kp KP_MULTIPLY &kp N4 &kp N5 &kp N6 &kp PLUS  &kp EQUAL
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp COMMA       &kp N1 &kp N2 &kp N3 &kp DOT   &kp RET
-                          	        &trans       &trans       &kp SPACE        &kp RET         &kp N0 &kp N0 
+                          	        &trans       &trans       &kp SPACE        &kp RET         &kp N0 &kp N0
                         >;
                 };
 
