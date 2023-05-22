@@ -39,7 +39,7 @@
    &trans    &trans   &trans   &kp LBKT &kp RBKT &trans      &kp MINUS &kp LPAR  &kp RPAR        &kp EQUAL &tran    &trans
    &kp LCTRL &kp LALT &kp LEFT &kp DOWN &kp UP   &kp RIGHT   &kp UNDER &kp LBRC  &kp RBRC        &kp GT    &trans   &kp RSHFT
                     	       &kp LGUI &kp LALT &trans   &mo 3   &trans  &trans
-                        >
+                        >;
                 };
 
                 layer_Lower {
