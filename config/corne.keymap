@@ -61,13 +61,13 @@
 // -----------------------------------------------------------------------------------------
 // |      |     |     |     |     |     |   |  /  |  7  |  8  |  9  |  -  |  BKSP |
 // |      |     |     |     |     |     |   |  *  |  4  |  5  |  6  |  +  |   =   |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |  ,  |  3  |  2  |  1  |  .  |  RET  |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |  ,  |  1  |  2  |  3  |  .  |  RET  |
 //                    |     |     | SPC |   | RET |  0  |  0  |
                         bindings = <
    &trans     &trans       &trans       &trans       &trans       &trans         &kp FSLH        &kp N7 &kp N8 &kp N9 &kp MINUS &kp BSPC
    &trans     &trans       &trans       &trans       &trans       &trans         &kp KP_MULTIPLY &kp N4 &kp N5 &kp N6 &kp PLUS  &kp EQUAL
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp COMMA       &kp N1 &kp N2 &kp N3 &kp DOT   &kp RET
-                          	        &trans       &trans       &kp SPACE        &kp RET         &kp N0 &kp N0
+                          	        &trans       &trans       &kp SPACE      &kp RET         &kp N0 &kp N0
                         >;
                 };
 
