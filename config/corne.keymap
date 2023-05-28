@@ -16,16 +16,17 @@
 
                 layer_Base {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E   |  R   |    T    |   |    Y    |  U   |  I  |  O  |  P  |  -  |
-// |  ESC |  A  |  S  |  D   |  F   |    G    |   |    H    |  J   |  K  |  L  |  ;  |  '  |
-// | SHFT |  Z  |  X  |  C   |  V   |    B    |   |    N    |  M   |  ,  |  .  |  /  | ALT |
-//                    | CTRL | BKSP | SPC/SYM |   | ENT/NAV | NUM  | COL |
+// |  TAB |  Q  |  W  |  E   |  R   |    T    |   |    Y    |  U   |  I   |  O  |  P  |  -  |
+// |  ESC |  A  |  S  |  D   |  F   |    G    |   |    H    |  J   |  K   |  L  |  ;  |  '  |
+// | SHFT |  Z  |  X  |  C   |  V   |    B    |   |    N    |  M   |  ,   |  .  |  /  | ALT |
+//                    | CTRL | BKSP | SPC/SYM |   | ENT/NAV | NUM  | COLE |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E     &kp R    &kp T         &kp Y     &kp U  &kp I     &kp O   &kp P    &kp MINUS
-   &kp ESC   &kp A &kp S &kp D     &kp F    &kp G         &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C     &kp V    &kp B         &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &kp RALT
-                         &kp LCTRL &kp BSPC &lt 1 SPACE   &lt 2 RET &mo 3  &to 4
+   &kp TAB   &kp Q &kp W &kp E     &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P    &kp MINUS
+   &kp ESC   &kp A &kp S &kp D     &kp F    &kp G       &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C     &kp V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &kp RALT
+                         &kp LCTRL &kp BSPC &lt 1 SPACE &lt 2 RET &mo 3  &to 4
                         >;
+                        label = "BASE"
                 };
 
                 layer_Symbol {
@@ -40,7 +41,7 @@
    &kp LCTRL &kp LALT &kp LEFT &kp DOWN &kp UP   &kp RIGHT   &kp MINUS &kp LBKT  &kp RBKT        &kp GT    &trans   &kp RSHFT
                     	       &kp LGUI &kp LALT &trans      &mo 3     &trans    &trans
                         >;
-                        label = Symbol
+                        label = "SYM"
                 };
 
                 layer_Nav {
@@ -55,6 +56,7 @@
    &trans     &trans    &trans  &trans &trans   &trans    &trans   &trans   &trans &trans    &trans &trans
                 	        &trans &kp LGUI &kp SPACE &kp RET  &kp LGUI &kp RALT
                         >;
+                        label = "NAV"
                 };
 
                 layer_NumBT {
@@ -69,6 +71,7 @@
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp KP_MULTIPLY &kp N1 &kp N2 &kp N3 &kp DOT   &kp RET
                           	        &trans       &trans       &kp SPACE      &kp RET         &kp N0 &kp N0
                         >;
+                        label = "NUM"
                 };
 
                 layer_ColemakDH {
@@ -83,6 +86,7 @@
    &kp LSHFT &kp Z &kp X &kp C     &kp D    &kp V        &kp K     &kp H  &kp COMMA &kp DOT &kp FSLH &kp RALT
                          &kp LCTRL &kp BSPC &lt 1 SPACE  &lt 2 RET &mo 3  &to 0
                         >;
+                        label = "COLE"
                 };
 
         };
