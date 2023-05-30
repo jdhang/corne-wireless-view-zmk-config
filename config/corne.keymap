@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define AS(keycode) &as LS(keycode) keycode    // Autoshift Macro
-#define AC(keycode) &ac LC(keycode) keycode    // CTRL Macro
+#define AC(keycode) &as LC(keycode) keycode    // CTRL Macro
 
 / {
         behaviors {
