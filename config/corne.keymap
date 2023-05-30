@@ -10,21 +10,32 @@
 
 
 / {
+        behaviors {
+                as: auto_shift {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "AUTO_SHIFT";
+                        #binding-cells = <2>;
+                        tapping_term_ms = <135>;
+                        quick_tap_ms = <0>;
+                        flavor = "tap-preferred";
+                        bindings = <&kp>, <&kp>;
+                };
+        };
 
         keymap {
                 compatible = "zmk,keymap";
 
                 layer_Base {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E   |  R   |    T    |   |    Y    |  U   |  I   |  O  |  P  |  -  |
-// |  ESC |  A  |  S  |  D   |  F   |    G    |   |    H    |  J   |  K   |  L  |  ;  |  '  |
-// | SHFT |  Z  |  X  |  C   |  V   |    B    |   |    N    |  M   |  ,   |  .  |  /  | ALT |
-//                    | CTRL | BKSP | SPC/SYM |   | ENT/NAV | NUM  | COLE |
+// |  TAB |  Q  |  W  |  E      |    R    |    T    |   |    Y    |  U   |  I   |  O  |  P  |  -  |
+// |  ESC |  A  |  S  |  D      |    F    |    G    |   |    H    |  J   |  K   |  L  |  ;  |  '  |
+// | SHFT |  Z  |  X  |  C/COPY | V/PASTE |    B    |   |    N    |  M   |  ,   |  .  |  /  | ALT |
+//                    |  CTRL   |  BKSP   | SPC/SYM |   | ENT/NAV | NUM  | COLE |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E     &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P    &kp MINUS
-   &kp ESC   &kp A &kp S &kp D     &kp F    &kp G       &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C     &kp V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &kp RALT
-                         &kp LCTRL &kp BSPC &lt 1 SPACE &lt 2 RET &mo 3  &to 4
+   &kp TAB   &kp Q &kp W &kp E          &kp R          &kp T       &kp Y     &kp U  &kp I     &kp O   &kp P        &kp AS(MINUS)
+   &kp ESC   &kp A &kp S &kp D          &kp F          &kp G       &kp H     &kp J  &kp K     &kp L   &kp AS(SEMI) &kp SQT
+   &kp LSHFT &kp Z &kp X &ht_tp LCTRL C &ht_tp LCTRL V &kp B       &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH     &kp RALT
+                         &kp LCTRL      &kp BSPC       &lt 1 SPACE &lt 2 RET &mo 3  &to 4
                         >;
                         label = "BASE";
                 };
