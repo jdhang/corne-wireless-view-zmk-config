@@ -14,15 +14,16 @@
 
 / {
         behaviors {
-                as: auto_shift {
+                ht_c: hold_tap_ctrl {
                         compatible = "zmk,behavior-hold-tap";
-                        label = "AUTO_SHIFT";
+                        label = "HOLD_TAP_CTRL";
                         #binding-cells = <2>;
-                        tapping_term_ms = <135>;
-                        quick_tap_ms = <0>;
+                        tapping-term-ms = <250>;
+                        quick-tap-ms = <0>;
                         flavor = "tap-preferred";
-                        bindings = <&kp>, <&kp>;
+                        bindings = <&kp LCTRL>, <&kp>;
                 };
+
                 skq: sticky_key_quick_release {
                         compatible = "zmk,behavior-sticky-key";
                         label = "STICKY_KEY_QUICK_RELEASE";
@@ -46,7 +47,7 @@
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E         &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O    &kp P    &kp MINUS
    &kp ESC   &kp A &kp S &kp D         &as F    &kp G       &kp H     &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &mt LC(C) C   &mt LC(V) V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
+   &kp LSHFT &kp Z &kp X &ht_c C   &ht_c V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
                          &kp LCTRL     &kp BSPC &lt 1 SPACE &lt 2 RET &mo 3  &to 4
                         >;
                         label = "BASE";
