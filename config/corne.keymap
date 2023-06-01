@@ -8,6 +8,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h> 
 
+#define HTC(keycode) &ht_c LC(keycode) keycode
+
 / {
         behaviors {
                 ht_c: hold_tap_copy {
@@ -17,7 +19,7 @@
                         tapping-term-ms = <250>;
                         quick-tap-ms = <0>;
                         flavor = "tap-preferred";
-                        bindings = <&kp LC()>, <&kp>;
+                        bindings = <&kp LC(code)>, <&kp>;
                 };
 
                 skq: sticky_key_quick_release {
@@ -43,7 +45,7 @@
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E         &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O    &kp P    &kp MINUS
    &kp ESC   &kp A &kp S &kp D         &mt LS(F) F    &kp G       &kp H     &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &ht_c C   &ht_c V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
+   &kp LSHFT &kp Z &kp X HTC(C)   HTC(V)    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
                          &kp LCTRL     &kp BSPC &lt &sl 1 SPACE &lt 2 RET &mo 3  &to 4
                         >;
                         label = "BASE";
