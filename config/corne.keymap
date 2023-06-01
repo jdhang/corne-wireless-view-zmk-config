@@ -12,14 +12,14 @@
 
 / {
         behaviors {
-                ht_c: hold_tap_copy {
+                ht_c: hold_tap_ctrl {
                         compatible = "zmk,behavior-hold-tap";
-                        label = "HOLD_TAP_COPY";
+                        label = "HOLD_TAP_CTRL";
                         #binding-cells = <2>;
                         tapping-term-ms = <250>;
                         quick-tap-ms = <0>;
                         flavor = "tap-preferred";
-                        bindings = <&kp LC(code)>, <&kp>;
+                        bindings = <&kp>, <&kp>;
                 };
 
                 skq: sticky_key_quick_release {
