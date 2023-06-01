@@ -8,10 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h> 
 
-&lt {
-    tapping-term-ms = <175>;
-};
-
 / {
         behaviors {
                 ht_c: hold_tap_ctrl {
@@ -46,9 +42,9 @@
 //                    |  CTRL   |  BKSP   | SPC/SYM |   | ENT/NAV | NUM  | COLE |
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E         &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O    &kp P    &kp MINUS
-   &kp ESC   &kp A &kp S &kp D         &as F    &kp G       &kp H     &kp J  &kp K     &kp L    &kp SEMI &kp SQT
+   &kp ESC   &kp A &kp S &kp D         &mt LS(F) F    &kp G       &kp H     &kp J  &kp K     &kp L    &kp SEMI &kp SQT
    &kp LSHFT &kp Z &kp X &ht_c C   &ht_c V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
-                         &kp LCTRL     &kp BSPC &lt 1 SPACE &lt 2 RET &mo 3  &to 4
+                         &kp LCTRL     &kp BSPC &lt &sl 1 SPACE &lt 2 RET &mo 3  &to 4
                         >;
                         label = "BASE";
                 };
