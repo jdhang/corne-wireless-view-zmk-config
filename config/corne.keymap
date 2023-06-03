@@ -8,8 +8,25 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-&lt {
-        tapping-term-ms = <175>;
+#include "../zmk-nodefree-config/helper.h"
+
+#define DEF 0
+#define SYM 1
+#define NAV 2
+#define NUM 3
+#define COLE 4
+
+#define XXX &none
+#define ___ &trans
+
+/* Global settings */
+
+#define QUICK_TAP_MS 175
+
+&lt {  // layer-tap config
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
 };
 
 &mt {
@@ -17,96 +34,104 @@
         tapping-term-ms = <200>;
 };
 
-/ {
-        behaviors {
-                skq: sticky_key_quick_release {
-                        compatible = "zmk,behavior-sticky-key";
-                        label = "STICKY_KEY_QUICK_RELEASE";
-                        #binding-cells = <1>;
-                        bindings = <&kp>;
-                        release-after-ms = <1000>;
-                        quick-release;
-                        ignore-modifiers;
-                };
-        };
+/* Caps-word, num-word and smart-mouse */
 
-        keymap {
-                compatible = "zmk,keymap";
-
-                layer_Base {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E      |    R    |    T    |   |    Y    |  U   |  I   |  O  |  P  |  -  |
-// |  ESC |  A  |  S  |  D      |    F    |    G    |   |    H    |  J   |  K   |  L  |  ;  |  '  |
-// | SHFT |  Z  |  X  |  C/COPY | V/PASTE |    B    |   |    N    |  M   |  ,   |  .  |  /  | ALT |
-//                    |  CTRL   |  BKSP   | SPC/SYM |   | ENT/NAV | NUM  | COLE |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E         &kp R    &kp T       &kp Y     &kp U  &kp I     &kp O    &kp P    &kp MINUS
-   &kp ESC   &kp A &kp S &kp D         &kp F    &kp G       &kp H     &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C   &kp V    &kp B       &kp N     &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RALT
-                         &kp LCTRL     &kp BSPC &lt 1 SPACE &lt 2 RET &to 3  &to 4
-                        >;
-                        label = "BASE";
-                };
-
-                layer_Symbol {
-// -----------------------------------------------------------------------------------------
-// |  `   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  =   |
-// |      |     |     |  {  |  }  |  |  |   |  +  |  (  |  )  |  =  |     |  \   |
-// | CTRL | ALT | LFT | DWN | UP  | RGT |   |  -  |  [  |  ]  |  >  |     | SHFT |
-//                    | GUI | ALT |     |   | NUM |     |     |
-                        bindings = <
-   &kp GRAVE  &kp EXCL  &kp AT   &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR &kp EQUAL
-   &trans     &trans    &trans   &kp LBRC &kp RBRC &kp PIPE    &kp PLUS  &kp LPAR  &kp RPAR        &kp EQUAL &trans   &kp BSLH
-   &trans &skq LC(LALT) &kp LEFT &kp DOWN &kp UP   &kp RIGHT   &kp MINUS &kp LBKT  &kp RBKT        &kp GT    &trans   &kp RSHFT
-                    	       &kp LGUI &kp LALT &trans      &mo 3     &trans    &trans
-                        >;
-                        label = "SYM";
-                };
-
-                layer_Nav {
-// -----------------------------------------------------------------------------------------
-// |  `  |  1  |  2  |  3  |  4   |  5  |   |  6  |  7  |  8  |  9  |  0  |      |
-// |     |     |     |     | HOME | END |   | LFT | DWN |  UP | RGT |     |      |
-// |     |     |     |     |      |     |   |     |     |     |     |     |      |
-//                   | GUI | DEL  | SPC |   | ENT | GUI | ALT |
-                        bindings = <
-   &kp GRAVE  &kp N1    &kp N2  &kp N3   &kp N4   &kp N5    &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
-   &trans     &trans    &trans  &trans   &kp HOME &kp END   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &trans     &trans    &trans  &trans   &trans   &trans    &trans   &trans   &trans &trans    &trans &trans
-              	        &kp LGUI &kp DEL  &kp SPACE &kp RET  &kp LGUI &kp RALT
-                        >;
-                        label = "NAV";
-                };
-
-                layer_NumBT {
-// -----------------------------------------------------------------------------------------
-// |   `   |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  -  |  BKSP |
-// |       |     |     |     |     |     |   |  /  |  4  |  5  |  6  |  +  |   =   |
-// | BTCLR | BT_PRV | BT_NXT |     |     |     |   |  *  |  1  |  2  |  3  |  .  |  RET  |
-//                     |     |     | SPC |   | RET |  0  |  0  |
-                        bindings = <
-   &kp GRAVE  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6          &kp N7 &kp N8 &kp N9 &kp MINUS &kp BSPC
-   &trans     &trans       &trans       &trans       &trans       &trans         &kp FSLH        &kp N4 &kp N5 &kp N6 &kp PLUS  &kp EQUAL
-   &bt BT_CLR &bt BT_PRV &bt BT_NXT &trans &trans &trans   &kp KP_MULTIPLY &kp N1 &kp N2 &kp N3 &kp DOT   &kp RET
-                          	        &trans       &trans       &kp SPACE      &kp RET         &kp N0 &kp N0
-                        >;
-                        label = "NUM";
-                };
-
-                layer_ColemakDH {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  F   |  P   |    B    |   |    J    |  L  |  U   |  Y  |  ;  |  -  |
-// |  ESC |  A  |  R  |  S   |  T   |    G    |   |    M    |  N  |  E   |  I  |  O  |  '  |
-// | SHFT |  Z  |  X  |  C   |  D   |    V    |   |    K    |  H  |  ,   |  .  |  /  | ALT |
-//                    | CTRL | BKSP | SPC/SYM |   | ENT/NAV | NUM | BASE |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp F     &kp P    &kp B        &kp J     &kp L  &kp U     &kp Y   &kp SEMI &kp MINUS
-   &kp ESC   &kp A &kp R &kp S     &kp T    &kp G        &kp M     &kp N  &kp E     &kp I   &kp O    &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C     &kp D    &kp V        &kp K     &kp H  &kp COMMA &kp DOT &kp FSLH &kp RALT
-                         &kp LCTRL &kp BSPC &lt 1 SPACE  &lt 2 RET &mo 3  &to 0
-                        >;
-                        label = "COLE";
-                };
-
-        };
+// tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
+ZMK_BEHAVIOR(smart_shft, mod_morph,
+    bindings = <&sk LSHFT>, <&caps_word>;
+    mods = <(MOD_LSFT)>;
+)
+&caps_word {  // mods deactivate caps-word, requires PR #1441
+    /delete-property/ ignore-modifiers;
 };
+
+// tap: num-word | double-tap: sticky num-layer | hold: num-layer
+#define SMART_NUM &smart_num NUM 0
+ZMK_BEHAVIOR(smart_num, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&mo>, <&num_dance>;
+)
+ZMK_BEHAVIOR(num_dance, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+)
+&num_word {  // num-word, requires PR #1441
+    layers = <NUM>;
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
+};
+
+// tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
+ZMK_BEHAVIOR(comma_morph, mod_morph,
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+    bindings = <&kp COMMA>, <&comma_inner_morph>;
+)
+ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
+    bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
+    mods = <(MOD_LCTL|MOD_RCTL)>;
+)
+
+// tap: dot | shift + tap: colon | ctrl + shift + tap: >
+ZMK_BEHAVIOR(dot_morph, mod_morph,
+    bindings = <&kp DOT>, <&dot_inner_morph>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
+    bindings = <&kp COLON>, <&kp GREATER_THAN>;
+    mods = <(MOD_LCTL|MOD_RCTL)>;
+)
+
+// tap: c | doube-tap: copy | triple-tap: cut
+ZMK_BEHAVIOR(c_copy_cut, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp C>, <&kp LC(INS)>, <&kp LC(X)>;
+)
+
+ZMK_LAYER(base,
+    //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+        X_LT     &kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P         &kp MINUS       X_RT
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LM     &kp ESC       &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT         X_RM
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LB     &kp LSHFT     &kp Z         &kp X         &c_copy_cut   &kp V         &kp V           X_MB     &kp N         &kp M         &comma_morph  &dot_morph    &kp FSLH      &kp RALT        X_RB
+    //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
+        X_LH                                               &lp LCTRL     &kp BSPC      &lt 1 SPACE     X_MH     &lt 2 RET     SMART_NUM     &to 4                                                     X_RH
+    //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
+)
+
+ZMK_LAYER(symbol,
+    //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+        X_LT     &kp GRAVE     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT       X_MT     &kp CARET     &kp AMPS      &kp KP_MULTIPLY &kp LPAR    &kp RPAR      &kp EQUAL       X_RT
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LM     ___           ___           ___           &kp LBRC      &kp RBRC      &kp PIPE        X_MM     &kp PLUS      &kp LPAR      &kp RPAR      &kp EQUAL     ___           &kp BSLH        X_RM
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LB     ___           &skq LC(LALT) &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       X_MB     &kp MINUS     &kp LBKT      &kp RBKT      &kp GT        ___           &kp RSHFT       X_RB
+    //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
+        X_LH                                               &kp LGUI      &kp LALT      ___             X_MH     ___           ___           ___                                                       X_RH
+    //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
+)
+
+ZMK_LAYER(nav,
+    //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+        X_LT     &kp GRAVE     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          X_MT     &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        ___             X_RT
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LM     ___           ___           ___           ___           &kp HOME      &kp END         X_MM     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     ___           ___             X_RM
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LB     ___           ___           ___           ___           ___           ___             X_MB     ___           ___           ___           ___           ___           ___             X_RB
+    //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
+        X_LH                                               &kp LGUI      &kp DEL       &kp SPACE       X_MH     ___           ___           ___                                                       X_RH
+    //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
+)
+
+ZMK_LAYER(sys,
+    //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+        X_LT     ___           ___           ___           ___           ___           ___             X_MT     ___           ___           ___           ___           ___           ___             X_RT
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LM     ___           ___           ___           ___           ___           ___             X_MM      ___           ___           ___           ___           ___           ___             X_RM
+    //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+        X_LB     &kp BT_CLR    &kp BT_PRV    &kp BT_NXT    ___           ___           ___             X_MB     ___           ___           ___           ___           ___           ___             X_RB
+    //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
+        X_LH                                               ___           ___           ___             X_MH     ___           ___           ___                                                       X_RH
+    //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
+)
