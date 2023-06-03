@@ -28,7 +28,7 @@
                 td: tapdance {
                         compatible = "zmk,behavior-hold-tap";
                         label = "TAPDANCE";
-                        #binding-cells = <2>;
+                        #binding-cells = <1>;
                         tapping-term-ms = <150>;
                         quick_tap_ms = <0>;
                         flavor = "tap-preferred";
@@ -86,10 +86,10 @@
 
                 layer_NumBT {
 // -----------------------------------------------------------------------------------------
-// |   `   |    1   |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  -  |  BKSP |
-// |       |        |     |     |     |     |   |  /  |  4  |  5  |  6  |  +  |   =   |
-// | BTCLR | BT_PRV | BT_NXT | BT3 | BT4 | BT5 |   |  *  |  1  |  2  |  3  |  .  |  RET  |
-//                     |     |     | SPC |   | RET |  0  |  0  |
+// |   `   |    1   |   2    |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  -  |  BKSP |
+// |       |        |        |     |     |     |   |  /  |  4  |  5  |  6  |  +  |   =   |
+// | BTCLR | BT_PRV | BT_NXT |     |     |     |   |  *  |  1  |  2  |  3  |  .  |  RET  |
+//                           |     |     | SPC |   | RET |  0  |  0  |
                         bindings = <
    &kp GRAVE  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6          &kp N7 &kp N8 &kp N9 &kp MINUS &kp BSPC
    &trans     &trans       &trans       &trans       &trans       &trans         &kp FSLH        &kp N4 &kp N5 &kp N6 &kp PLUS  &kp EQUAL
