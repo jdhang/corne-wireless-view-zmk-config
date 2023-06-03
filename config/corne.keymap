@@ -25,15 +25,23 @@
                         quick-release;
                         ignore-modifiers;
                 };
-                gqt: global-quick-tap {
+                ht_copy: hold_tap_copy {
                         compatible = "zmk,behavior-hold-tap";
-                        label = "GLOBAL_QUICK_TAP";
-                        #binding-cells = <2>;
+                        label = "HOLD_TAP_COPY";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <150>;
+                        quick_tap_ms = <0>;
                         flavor = "tap-preferred";
-                        tapping-term-ms = <200>;
-                        quick-tap-ms = <125>;
-                        global-quick-tap;
-                        bindings = <&kp>, <&kp>;
+                        bindings = <&kp LC(C)>, <&kp C>;
+                };
+                ht_paste: hold_tap_paste {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "HOLD_TAP_PASTE";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <150>;
+                        quick_tap_ms = <0>;
+                        flavor = "tap-preferred";
+                        bindings = <&kp LC(V)>, <&kp V>;
                 };
         };
 
@@ -49,7 +57,7 @@
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E        &kp R        &kp T           &kp Y     &kp U  &kp I     &kp O   &kp P    &kp MINUS
    &kp ESC   &kp A    &kp S &kp D        &kp F        &kp G           &kp H     &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z    &kp X &kp C  &kp V  &kp B           &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &kp RALT
+   &kp LSHFT &kp Z    &kp X &ht_copy  &ht_paste  &kp B           &kp N     &kp M  &kp COMMA &kp DOT &kp FSLH &kp RALT
                             &kp LCTRL    &kp BSPC     &lt &sl 1 SPACE &lt 2 RET &to 3  &to 4
                         >;
                         label = "BASE";
