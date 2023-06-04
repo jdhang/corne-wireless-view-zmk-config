@@ -93,22 +93,48 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
     mods = <(MOD_LCTL|MOD_RCTL)>;
 )
 
+// tap: left-parenthesis | shft + tap: less-than
+ZMK_BEHAVIOR(lpar_lt, mod_morph,
+    bindings = <&kp LPAR>, <&kp LT>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+// tap: right-parenthesis | shft + tap: greater-than
+ZMK_BEHAVIOR(rpar_gt, mod_morph,
+    bindings = <&kp RPAR>, <&kp GT>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
 // tap: c | doube-tap: copy | triple-tap: cut
 ZMK_BEHAVIOR(c_copy_cut, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&kp C>, <&kp LC(INS)>, <&kp LC(X)>;
+    bindings = <&kp C>, <&kp LC(C)>, <&kp LC(X)>;
 )
+
 // tap: v | doube-tap: paste
 ZMK_BEHAVIOR(v_paste, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&kp V>, <&kp LC(V)>;
 )
 
+/* coding */
+ZMK_BEHAVIOR(arrow_fn, macro,
+    bindings = <&macro_tap &kp EQUAL>
+            , <&macro_tap &kp GT>;
+)
+// tap: = | doube-tap: =>
+ZMK_BEHAVIOR(eq_arrow, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp EQUAL>, <&arrow_fn>;
+)
+
+
+
 ZMK_LAYER(BASE,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
         X_LT     &kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T           X_MT     &kp Y         &kp U         &kp I         &kp O         &kp P         &kp MINUS       X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     &kp ESC       &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT         X_RM
+        X_LM     &kp ESC       &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp PLUS         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &kp RALT        X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
@@ -118,11 +144,11 @@ ZMK_LAYER(BASE,
 
 ZMK_LAYER(SYM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-        X_LT     &kp GRAVE     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT       X_MT     &kp CARET     &kp AMPS      &kp MULTIPLY  ___           ___           &kp EQUAL       X_RT
+        X_LT     &kp GRAVE     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT       X_MT     &kp CARET     &kp AMPS      &kp STAR      ___           &kp BSLH      &kp EQUAL       X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           ___           ___           &kp LBRC      &kp RBRC      &kp PIPE        X_MM     &kp PLUS      &kp LPAR      &kp RPAR      &kp EQUAL     ___           &kp BSLH        X_RM
+        X_LM     ___           ___           &kp PIPE      &lpar_lt      &kp LBRC      &kp LBKT        X_MM     &kp RBKT      &kp RBRC      &rpar_rt      &eq_arrow     ___           &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           &skq LG(LALT) &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       X_MB     &kp MINUS     &kp LBKT      &kp RBKT      &kp GT        ___           &kp RSHFT       X_RB
+        X_LB     ___           &skq LG(LALT) &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT       X_MB     &kp UNDER     ___           ___           &kp GT        ___           &kp RSHFT       X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               &skq LCTRL    &kp LALT      ___             X_MH     ___           ___           ___                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
@@ -144,9 +170,9 @@ ZMK_LAYER(NUM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
         X_LT     &kp GRAVE     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          X_MT     &kp N6        &kp N7        &kp N8        &kp N9        &kp MINUS     ___             X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           ___           ___           ___           ___           ___             X_MM     &kp DIVIDE    &kp N4        &kp N5        &kp N6        &kp PLUS      ___             X_RM
+        X_LM     ___           ___           ___           ___           ___           ___             X_MM     &kp FSLH      &kp N4        &kp N5        &kp N6        &kp PLUS      ___             X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     &bt BT_CLR    &bt BT_PRV    &bt BT_NXT    ___           ___           ___             X_MB     &kp MULTIPLY  &kp N1        &kp N2        &kp N3        &kp EQUAL     ___             X_RB
+        X_LB     &bt BT_CLR    &bt BT_PRV    &bt BT_NXT    ___           ___           ___             X_MB     &kp STAR      &kp N1        &kp N2        &kp N3        &kp EQUAL     ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               ___           &to BASE_L    ___             X_MH     &kp RET       &kp N0        &kp DOT                                                   X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
