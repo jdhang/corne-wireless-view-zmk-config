@@ -10,11 +10,11 @@
 
 #include "../zmk-nodefree-config/helper.h"
 
-#define BASE 0
-#define SYM 1
-#define NAV 2
-#define NUM 3
-#define COLE 4
+// #define BASE 0
+// #define SYM 1
+// #define NAV 2
+// #define NUM 3
+// #define COLE 4
 
 // #include "combos.dtsi"  // requires layer aliases
 // #include "mouse.dtsi"
