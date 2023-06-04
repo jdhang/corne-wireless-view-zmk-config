@@ -38,6 +38,14 @@
         tapping-term-ms = <200>;
 };
 
+// sticky quick release
+ZMK_BEHAVIOR(skq, sticky_key,
+    release-after-ms = <1000>;
+    quick-release;
+    ignore-modifiers;
+    bindings = <&kp>;
+)
+
 /* Caps-word, num-word and smart-mouse */
 
 // tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
