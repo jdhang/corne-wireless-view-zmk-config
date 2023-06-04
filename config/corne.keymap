@@ -47,7 +47,6 @@ ZMK_BEHAVIOR(skq, sticky_key,
 )
 
 /* Caps-word, num-word and smart-mouse */
-
 // tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
 ZMK_BEHAVIOR(smart_shft, mod_morph,
     bindings = <&sk LSHFT>, <&caps_word>;
@@ -58,7 +57,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM 0
+#define SMART_NUM &smart_num NUM_L BASE_L
 ZMK_BEHAVIOR(smart_num, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <200>;
@@ -67,7 +66,7 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl NUM_L>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1441
     layers = <NUM>;
