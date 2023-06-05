@@ -108,13 +108,13 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
 // tap: c | doube-tap: copy | triple-tap: cut
 ZMK_BEHAVIOR(c_copy_cut, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&kp C>, <&kp LC(C)>, <&kp LC(X)>;
+    bindings = <&kp C>, <&kp LG(C)>, <&kp LG(X)>;
 )
 
 // tap: v | doube-tap: paste
 ZMK_BEHAVIOR(v_paste, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&kp V>, <&kp LC(V)>;
+    bindings = <&kp V>, <&kp LG(V)>;
 )
 // tap: gui | doube-tap: ctrl
 ZMK_BEHAVIOR(gui_ctrl, tap_dance,
