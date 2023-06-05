@@ -57,7 +57,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM_L BASE_L
+#define SMART_NUM &smart_num NAV_L BASE_L
 ZMK_BEHAVIOR(smart_num, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <200>;
@@ -66,7 +66,7 @@ ZMK_BEHAVIOR(smart_num, hold_tap,
 )
 ZMK_BEHAVIOR(num_dance, tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&num_word>, <&sl NAV_L>;  // reverse this for sticky-num on single tap
+    bindings = <&num_word>, <&sl NUM_L>;  // reverse this for sticky-num on single tap
 )
 &num_word {  // num-word, requires PR #1441
     layers = <NUM_L>;
@@ -182,7 +182,7 @@ ZMK_LAYER(NUM,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LB     &bt BT_CLR    &bt BT_PRV    &bt BT_NXT    ___           ___           ___             X_MB     &kp STAR      &kp N1        &kp N2        &kp N3        &kp EQUAL     ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               ___           &to BASE_L    ___             X_MH     &kp RET       &kp N0        &kp DOT                                                   X_RH
+        X_LH                                               ___           ___           ___             X_MH     &kp RET       &kp N0        &kp DOT                                                   X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -192,8 +192,8 @@ ZMK_LAYER(COLE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LM     &kp ESC       &kp A         &kp R         &kp S         &kp T         &kp G           X_MM     &kp M         &kp N         &kp E         &kp I         &kp O         &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &kp D         &v_paste        X_MB     &kp K         &kp H         &kp COMMA     &kp DOT       &kp FSLH      &to BASE_L      X_RB
+        X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &kp D         &v_paste        X_MB     &kp K         &kp H         &kp COMMA     &kp DOT       &kp FSLH      &kp RET         X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &gui_ctrl     &kp BSPC     &lt SYM_L SPACE X_MH     &lt NAV_L RET &to SYM_L     SMART_NUM                                                 X_RH
+        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET &to SYM_L     &to BASE_L                                                X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
