@@ -124,13 +124,10 @@ ZMK_BEHAVIOR(gui_ctrl, tap_dance,
 
 /* coding */
 ZMK_BEHAVIOR(up_dir, macro,
-    bindings = <&macro_tap &kp DOT>
-             , <&macro_tap &kp DOT>
-             , <&macro_tap &kp FLSH>;
+    bindings = <&macro_tap &kp DOT>, <&macro_tap &kp DOT>, <&macro_tap &kp FLSH>;
 )
 ZMK_BEHAVIOR(arrow_fn, macro,
-    bindings = <&macro_tap &kp EQUAL>
-             , <&macro_tap &kp GT>;
+    bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp GT>;
 )
 // tap: = | doube-tap: =>
 ZMK_BEHAVIOR(eq_arrow, tap_dance,
