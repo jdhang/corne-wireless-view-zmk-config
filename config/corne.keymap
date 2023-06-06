@@ -123,6 +123,9 @@ ZMK_BEHAVIOR(gui_ctrl, tap_dance,
 )
 
 /* coding */
+ZMK_BEHAVIOR(up_dir, macro,
+    bindings = <&macro_tap &kp DOT>, <&macro_tap &kp DOT>, <&macro_tap &kp FLSH>;
+)
 ZMK_BEHAVIOR(arrow_fn, macro,
     bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp GT>;
 )
@@ -146,19 +149,19 @@ ZMK_LAYER(BASE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      SMART_NUM       X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET &to SYM_L     &to COLE_L                                                X_RH
+        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET ___           &to COLE_L                                                X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
 ZMK_LAYER(SYM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-        X_LT     ___           ___           ___           &kp HASH      &kp PRCNT     ___             X_MT     ___           &kp CARET     &kp STAR      ___           &kp BSLH      &kp EQUAL       X_RT
+        X_LT     ___           ___           &kp LT        &kp GT        &kp AT        &kp DOT         X_MT     &kp AMPS      &kp STAR      &kp LBKT      &kp RBKT      &kp BSLH      &kp EQUAL       X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     &kp GRAVE     &kp EXCL      &kp DLLR      &lpar_lt      &kp LBRC      &kp LBKT        X_MM     &kp RBKT      &kp RBRC      &rpar_gt      &eq_arrow     ___           &kp SQT         X_RM
+        X_LM     &kp GRAVE     &kp EXCL      &kp MINUS     &kp PLUS      &eq_arrow     &kp HASH        X_MM     &kp PIPE      &kp COLON     &lpar_lt      &rpar_gt      &kp PRCNT     &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           &skq LG(LALT) &kp LEFT      &kp AMPS      &kp PIPE      &kp MINUS       X_MB     &kp UNDER     &kp AT        ___           ___           ___           &kp RSHFT       X_RB
+        X_LB     ___           &skq LG(LALT) &kp BSLH      &kp AMPS      &kp CARET     &up_dir         X_MB     &kp GRAVE     &kp DLLR      &kp LBRC      &kp RBRC      &kp FSLH      &kp RSHFT       X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &skq LCTRL    &kp LALT      ___             X_MH     ___           &to BASE_L    ___                                                       X_RH
+        X_LH                                               &kp LC(END)   &kp LC(HOME   ___             X_MH     ___           &kp HOME      &kp END                                                   X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
