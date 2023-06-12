@@ -56,12 +56,6 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
     /delete-property/ ignore-modifiers;
 };
 
-// tap: Z
-ZMK_BEHAVIOR(z_shft, tap_dance,
-    tapping-term-ms = <150>;
-    bindings = <&kp Z>, <&smart_shft>;
-)
-
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
 #define SMART_NUM &smart_num NUM_L BASE_L
 ZMK_BEHAVIOR(smart_num, hold_tap,
@@ -153,7 +147,7 @@ ZMK_LAYER(BASE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LM     &kp ESC       &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     &smart_shft   &z_shft       &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      ___             X_RB
+        X_LB     &smart_shft   &mt LSHFT Z   &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET SMART_NUM     ___                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
