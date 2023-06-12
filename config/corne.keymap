@@ -47,7 +47,7 @@ ZMK_BEHAVIOR(skq, sticky_key,
 )
 
 /* Caps-word, num-word and smart-mouse */
-// tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
+// tap: sticky-shift | shift + tap/double-tap: caps-word | hold: shift
 ZMK_BEHAVIOR(smart_shft, mod_morph,
     bindings = <&sk LSHFT>, <&caps_word>;
     mods = <(MOD_LSFT)>;
@@ -105,18 +105,18 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
-// tap: c | doube-tap: copy | triple-tap: cut
+// tap: c | double-tap: copy
 ZMK_BEHAVIOR(c_copy_cut, tap_dance,
-    tapping-term-ms = <200>;
-    bindings = <&kp C>, <&kp LG(C)>, <&kp LG(X)>;
+    tapping-term-ms = <150>;
+    bindings = <&kp C>, <&kp LG(C)>;
 )
 
-// tap: v | doube-tap: paste
+// tap: v | double-tap: paste
 ZMK_BEHAVIOR(v_paste, tap_dance,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <150>;
     bindings = <&kp V>, <&kp LG(V)>;
 )
-// tap: gui | doube-tap: ctrl
+// tap: gui | double-tap: ctrl
 ZMK_BEHAVIOR(gui_ctrl, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&skq LGUI>, <&skq LCTRL>;
@@ -129,9 +129,9 @@ ZMK_BEHAVIOR(up_dir, macro,
 ZMK_BEHAVIOR(arrow_fn, macro,
     bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp GT>;
 )
-// tap: = | doube-tap: =>
+// tap: = | double-tap: =>
 ZMK_BEHAVIOR(eq_arrow, tap_dance,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <150>;
     bindings = <&kp EQUAL>, <&arrow_fn>;
 )
 
@@ -147,9 +147,9 @@ ZMK_LAYER(BASE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LM     &kp ESC       &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      SMART_NUM       X_RB
+        X_LB     &smart_shft   &kp Z         &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &to COLE_L      X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET SMART_NUM     &to COLE_L                                                X_RH
+        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET SMART_NUM     XXX                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -159,7 +159,7 @@ ZMK_LAYER(SYM,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LM     ___           &kp EXCL      &kp MINUS     ___           &eq_arrow     &kp HASH        X_MM     &kp PIPE      &lpar_lt      &rpar_gt      ___           &kp PRCNT     &kp SQT         X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           &skq LG(LALT) &kp PLUS      ___           &kp CARET     &up_dir         X_MB     &kp GRAVE     &kp DLLR      &kp LBRC      &kp RBRC      &kp FSLH      ___             X_RB
+        X_LB     ___           &skq LG(LALT) &kp PLUS      ___           &kp CARET     &up_dir         X_MB     &kp GRAVE     &kp DLLR      &kp LBRC      &kp RBRC      &kp FSLH      &key_repeat     X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               &kp LC(END)   &kp LC(HOME)  ___             X_MH     &gui_ctrl     &kp HOME      &kp END                                                   X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
