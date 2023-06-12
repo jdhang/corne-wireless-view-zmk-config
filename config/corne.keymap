@@ -56,6 +56,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
     /delete-property/ ignore-modifiers;
 };
 
+// tap: Z
 ZMK_BEHAVIOR(z_shft, tap_dance,
     tapping-term-ms = <150>;
     bindings = <&kp Z>, <&smart_shft>;
@@ -154,7 +155,7 @@ ZMK_LAYER(BASE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LB     &smart_shft   &z_shft       &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET SMART_NUM     XXX                                                       X_RH
+        X_LH                                               &gui_ctrl     &kp BSPC      &lt SYM_L SPACE X_MH     &lt NAV_L RET SMART_NUM     ___                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
