@@ -124,7 +124,7 @@ ZMK_BEHAVIOR(gui_ctrl, tap_dance,
 
 /* coding */
 ZMK_BEHAVIOR(eq_3x, macro,
-    bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp EQUAL, <&macro_tap &kp EQUAL>;
+    bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp EQUAL>, <&macro_tap &kp EQUAL>;
 )
 ZMK_BEHAVIOR(up_dir, macro,
     bindings = <&macro_tap &kp DOT>, <&macro_tap &kp DOT>, <&macro_tap &kp FSLH>;
