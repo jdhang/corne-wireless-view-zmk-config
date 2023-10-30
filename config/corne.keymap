@@ -10,6 +10,7 @@
 
 #include "../zmk-nodefree-config/helper.h"
 
+<<<<<<< HEAD
 #define BASE_L 0
 #define SYM_L 1
 #define NAV_L 2
