@@ -50,7 +50,7 @@ ZMK_BEHAVIOR(skq, sticky_key,
 // tap: sticky-shift | shift + tap/double-tap: caps-word | hold: shift
 ZMK_BEHAVIOR(smart_shft, mod_morph,
     bindings = <&sk LSHFT>, <&caps_word>;
-    mods = <(MOD_LSHFT)>;
+    mods = <(MOD_LSFT)>;
 )
 &caps_word {  // mods deactivate caps-word, requires PR #1441
     /delete-property/ ignore-modifiers;
@@ -75,7 +75,7 @@ ZMK_BEHAVIOR(num_dance, tap_dance,
 
 // tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
 ZMK_BEHAVIOR(comma_morph, mod_morph,
-    mods = <(MOD_LSHFT|MOD_RSFT)>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&comma_inner_morph>;
 )
 ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
@@ -86,7 +86,7 @@ ZMK_BEHAVIOR(comma_inner_morph, mod_morph,
 // tap: dot | shift + tap: colon | ctrl + shift + tap: >
 ZMK_BEHAVIOR(dot_morph, mod_morph,
     bindings = <&kp DOT>, <&dot_inner_morph>;
-    mods = <(MOD_LSHFT|MOD_RSFT)>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
     bindings = <&kp COLON>, <&kp GREATER_THAN>;
@@ -96,13 +96,13 @@ ZMK_BEHAVIOR(dot_inner_morph, mod_morph,
 // tap: left-parenthesis | shft + tap: less-than
 ZMK_BEHAVIOR(lpar_lt, mod_morph,
     bindings = <&kp LPAR>, <&kp LT>;
-    mods = <(MOD_LSHFT|MOD_RSFT)>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 // tap: right-parenthesis | shft + tap: greater-than
 ZMK_BEHAVIOR(rpar_gt, mod_morph,
     bindings = <&kp RPAR>, <&kp GT>;
-    mods = <(MOD_LSHFT|MOD_RSFT)>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 // tap: c | double-tap: copy
@@ -116,11 +116,13 @@ ZMK_BEHAVIOR(v_paste, tap_dance,
     tapping-term-ms = <150>;
     bindings = <&kp V>, <&kp LG(V)>;
 )
+
 // tap: gui | double-tap: ctrl
 ZMK_BEHAVIOR(gui_ctrl, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&kp LGUI>, <&kp LCTRL>;
 )
+
 // tap: ctrl | double-tap: gui
 ZMK_BEHAVIOR(ctrl_gui, tap_dance,
     tapping-term-ms = <200>;
