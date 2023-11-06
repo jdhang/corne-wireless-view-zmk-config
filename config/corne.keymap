@@ -39,7 +39,7 @@
 };
 
 // sticky quick release
-ZMK_BEHAVIOR(skq, sticky_key,ZMK_BEHAVIOR
+ZMK_BEHAVIOR(skq, sticky_key,
     release-after-ms = <1000>;
     #binding-cells = <1>; 
     bindings = <&kp>;
