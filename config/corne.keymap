@@ -1,4 +1,4 @@
-/*
+
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -39,11 +39,12 @@
 };
 
 // sticky quick release
-ZMK_BEHAVIOR(skq, sticky_key,
+ZMK_BEHAVIOR(skq, sticky_key,ZMK_BEHAVIOR
     release-after-ms = <1000>;
+    #binding-cells = <1>; 
+    bindings = <&kp>;
     quick-release;
     ignore-modifiers;
-    bindings = <&kp>;
 )
 
 /* Caps-word, num-word and smart-mouse */
@@ -105,6 +106,12 @@ ZMK_BEHAVIOR(rpar_gt, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
+// tap: back slash | shft + tap: forward slash
+ZMK_BEHAVIOR(bslh_fslh, mod_morph,
+    bindings = <&kp BSLH>, <&kp FSLH>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
 // tap: c | double-tap: copy
 ZMK_BEHAVIOR(c_copy_cut, tap_dance,
     tapping-term-ms = <150>;
@@ -139,17 +146,6 @@ ZMK_BEHAVIOR(up_dir, macro,
 ZMK_BEHAVIOR(arrow_fn, macro,
     bindings = <&macro_tap &kp EQUAL>, <&macro_tap &kp GT>;
 )
-// tap: = | double-tap: =>
-ZMK_BEHAVIOR(eq_arrow, tap_dance,
-    tapping-term-ms = <200>;
-    bindings = <&kp EQUAL>, <&arrow_fn>;
-)
-
-// tap: toggle NUM_L | hold: NAV_L
-ZMK_BEHAVIOR(num_nav, tap_dance,
-    tapping-term-ms = <150>;
-    bindings = <&to NUM_L>, <&mo NAV_L>;
-)
 
 ZMK_LAYER(BASE,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
@@ -157,21 +153,21 @@ ZMK_LAYER(BASE,
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LM     &mt LCTRL ESC &kp A         &kp S         &kp D         &kp F         &kp G           X_MM     &kp H         &kp J         &kp K         &kp L         &kp SEMI      ___             X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     &smart_shft   &mt LSHFT Z   &kp X         &c_copy_cut   &v_paste      &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &mt LSHFT FSLH ___            X_RB
+        X_LB     &smart_shft   &mt LSHFT Z   &kp X         &kp C         &kp V         &kp B           X_MB     &kp N         &kp M         &kp COMMA     &kp DOT       &mt LSHFT FSLH ___            X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &mt LGUI ESC  &lt NUM_L BSPC &lt SYM_L SPACE X_MH    &lt NAV_L RET &mt LSHFT ESC &mt LCTRL TAB                                             X_RH
+        X_LH                                               &skq LGUI     &lt NUM_L BSPC &lt SYM_L SPACE X_MH    &lt NAV_L RET &mt LSHFT ESC &skq LCTRL                                                X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
 ZMK_LAYER(SYM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-        X_LT     ___           ___           ___           ___           ___           ___             X_MT     &kp AMPS      &kp LBKT      &kp RBKT      &kp PLUS      &kp MINUS     ___             X_RT
+        X_LT     ___           ___           ___           ___           &kp GRAVE     &kp STAR        X_MT     &kp AMPS      &kp LBKT      &kp RBKT      &kp PLUS      &kp MINUS     ___             X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           &kp EXCL      &kp QMARK     &kp CARET     &eq_arrow     &kp PRCNT       X_MM     &kp PIPE      &lpar_lt      &rpar_gt      &kp SEMI      &kp SQT       ___             X_RM
+        X_LM     ___           &kp EXCL      &kp QMARK     &kp CARET     &kp EQUAL     &arrow_fn       X_MM     &kp PIPE      &lpar_lt      &rpar_gt      &kp SEMI      &kp SQT       ___             X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           ___           ___           &kp DLLR      &kp GRAVE     &kp MINUS       X_MB     &kp STAR      &kp LBRC      &kp RBRC      &kp GRAVE     &kp BSLH      ___             X_RB
+        X_LB     ___           ___           ___           &kp DLLR      &kp TILDE     &kp UNDER       X_MB     &kp MINUS     &kp LBRC      &kp RBRC      &kp GRAVE     &bslh_fslh    ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               ___           ___           ___             X_MH     &skq LSHFT    &skq LGUI     &skq LCTRL                                                X_RH
+        X_LH                                               ___           &skq LALT     ___             X_MH     &skq LSHFT    &skq LGUI     &skq LCTRL                                                X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -179,11 +175,11 @@ ZMK_LAYER(NAV,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
         X_LT     ___           &kp TAB       ___           ___           ___           ___             X_MT     &kp LG(LBKT)  &kp LG(RBKT)  &kp LC(LS(TAB)) &kp RC(TAB) ___           ___             X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           &kp ESC       &skq LCTRL    &skq LGUI     &skq LSHFT    &kp LALT        X_MM     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     ___           ___             X_RM
+        X_LM     ___           &skq LCTRL    &skq LALT     &skq LGUI     &skq LSHFT    &kp ESC         X_MM     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     ___           ___             X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
         X_LB     ___           ___           ___           ___           ___           ___             X_MB     &kp HOME      &kp END       &kp PG_DN     &kp PG_UP     ___           ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
-        X_LH                                               &skq LCTRL    &kp DEL       &skq LCTRL      X_MH     ___           ___           ___                                                       X_RH
+        X_LH                                               ___           &kp DEL       &skq LCTRL      X_MH     ___           ___           ___                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
 )
 
@@ -191,9 +187,9 @@ ZMK_LAYER(NUM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
         X_LT     &bt BT_CLR    ___           &bt BT_PRV    &bt BT_NXT    ___           &kp PRCNT       X_MT     &kp STAR      &kp N7        &kp N8        &kp N9        &kp PLUS      ___             X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           ___           &skq LCTRL    &skq LGUI     &skq LSHFT    &kp LALT        X_MM     &kp COMMA     &kp N4        &kp N5        &kp N6        &kp MINUS     ___             X_RM
+        X_LM     ___           &skq LCTRL    &skq LALT     &skq LGUI     &skq LSHFT    ___             X_MM     &kp FSLH      &kp N4        &kp N5        &kp N6        &kp MINUS     ___             X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           &to BASE_L    ___           ___           ___           ___             X_MB     &kp DOT       &kp N1        &kp N2        &kp N3        &kp FSLH      ___             X_RB
+        X_LB     ___           &to BASE_L    ___           ___           ___           &kp COMMA       X_MB     &kp DOT       &kp N1        &kp N2        &kp N3        ___           ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               ___           ___           ___             X_MH     &kp RET       &kp N0        &kp N0                                                    X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
