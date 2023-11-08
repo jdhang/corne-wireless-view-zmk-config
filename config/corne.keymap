@@ -26,7 +26,7 @@
 /* Global settings */
 
 #define QUICK_TAP_MS 175
-#define TAP_TERM_MS 170
+#define TAP_TERM_MS 200
 
 &lt {  // layer-tap config
     flavor = "balanced";
@@ -35,8 +35,6 @@
 };
 
 &mt { // mod-tap config
-    quick-tap-ms = <100>;
-    global-quick-tap;
     flavor = "tap-preferred";
     tapping-term-ms = <TAP_TERM_MS>;
 };
