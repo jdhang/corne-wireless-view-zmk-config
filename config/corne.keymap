@@ -112,6 +112,12 @@ ZMK_BEHAVIOR(bslh_fslh, mod_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
+// tap: minus | shft + tap: underscore
+ZMK_BEHAVIOR(minus_under, mod_morph,
+    bindings = <&kp MINUS>, <&kp UNDER>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
 // tap: c | double-tap: copy
 ZMK_BEHAVIOR(c_copy_cut, tap_dance,
     tapping-term-ms = <150>;
@@ -161,11 +167,11 @@ ZMK_LAYER(BASE,
 
 ZMK_LAYER(SYM,
     //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
-        X_LT     ___           ___           ___           &kp HASH      &kp GRAVE     &kp PRCNT       X_MT     &kp AMPS      &kp LBKT      &kp RBKT      &kp STAR      &kp DQT       ___             X_RT
+        X_LT     ___           ___           &kp AT        &kp HASH      &kp GRAVE     &kp PRCNT       X_MT     &kp AMPS      &kp LBKT      &kp RBKT      &kp STAR      &kp DQT       ___             X_RT
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LM     ___           &kp EXCL      &kp AT        &kp CARET     &kp EQUAL     &arrow_fn       X_MM     &kp PIPE      &lpar_lt      &rpar_gt      &kp COLON     &kp SQT      ___              X_RM
+        X_LM     ___           &kp EXCL      &kp QMARK     &kp CARET     &kp EQUAL     &arrow_fn       X_MM     &kp PIPE      &lpar_lt      &rpar_gt      &kp COLON     &kp SQT      ___              X_RM
     //├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
-        X_LB     ___           &kp QMARK     ___           &kp DLLR      &kp TILDE     &kp MINUS       X_MB     &kp UNDER     &kp LBRC      &kp RBRC      ___           &bslh_fslh    ___             X_RB
+        X_LB     ___           &kp QMARK     ___           &kp DLLR      &kp TILDE     &kp UNDER       X_MB     &minus_under  &kp LBRC      &kp RBRC      &kp STAR      &bslh_fslh    ___             X_RB
     //├──────┤ ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────┴─────────────╯ ├──────┤
         X_LH                                               ___           &skq LALT     ___             X_MH     &skq LGUI     &skq LSHFT    ___                                                       X_RH
     //╰──────╯                                           ╰─────────────┴─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────┴─────────────╯                                           ╰──────╯
